@@ -9,4 +9,3 @@ To do:
 2.Clone the repository in Android Studio
 3.Edit your folder's files
 
-Deadline:13/04/2025
