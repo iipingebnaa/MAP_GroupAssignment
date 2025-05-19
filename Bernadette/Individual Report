@@ -1,4 +1,4 @@
-THINGS TO DOCUMENT...
+//THINGS TO DOCUMENT...
 1.What have you done throughout the whole project cycle?(Your contributions)
 2.What have you learnt?
 3.What challenges did you face?
@@ -6,3 +6,57 @@ THINGS TO DOCUMENT...
 Start...
 
 https://docs.google.com/document/d/1AlaWxo3Z2baVNIVNpLvqMwa0PvJpr1HWAhPitggc4fA/edit?usp=sharing
+//
+
+
+
+1. MY CONTRIBUTIONS TO THE PROJECT:
+
+-Implemented User Authentication: Integrated Firebase Authentication to allow users to register and login using email and password.
+
+-Firestore Integration: Configured Firestore to store additional user details like username and email after registration.
+
+-UI Development: Updated the initial screen deigns, and made them Built user-friendly using Jetpack Compose.
+
+-Navigation Setup: Set up screen navigation between screens using Jetpack Compose Navigation components.
+
+-Data Retrieval: Added functionality to fetch and display the list of registered users from Firestore after successful login.
+
+-Error Handling: Managed error messages and input validation to ensure better user experience.
+
+-Security: Applied Firestore security rules to restrict access so users can only read/write their own data.
+
+-Debugging and Testing: Diagnosed and fixed issues such as incorrect email validation and navigation callback usage.
+
+
+
+2. WHAT I HAVE LEARNT:
+
+- How to integrate Firebase Authentication and Firestore into an Android app, including setting up rules and data structure.
+
+- Building modern Android UIs declaratively with Compose, managing state, and handling user interactions.
+
+- Managing navigation flow with NavHostController and composing screen transitions.
+
+-Handling asynchronous Firebase tasks using listeners and updating UI based on success or failure.
+
+- Writing Firestore security rules to protect user data.
+
+- Identifying and solving common problems such as invalid inputs, navigation bugs, and Firestore access issues.
+
+State Management: Using Compose's remember and mutableStateOf for reactive UI updates.
+
+
+3. Challenges I faced:
+
+- Initially had overly restrictive email validation (only allowing gmail.com) which caused login issues.
+
+- Managing onLoginSuccess callback correctly to ensure smooth navigation flow after login.
+
+- Fetching and displaying users’ data immediately after login without blocking UI or causing crashes.
+
+- Managing multiple UI states (loading, errors, visibility toggles) in a clean and maintainable way.
+
+- Diagnosing Firebase Auth failures and understanding error messages for better UX.
+
+-Ensuring UI design did not break or change unexpectedly while adding new features like user list display.
