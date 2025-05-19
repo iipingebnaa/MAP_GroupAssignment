@@ -4,3 +4,50 @@ THINGS TO DOCUMENT...
 3.What challenges did you face?
 
 Start...
+
+Overview
+As the assigned Backend Developer for our Namibia Hockey Union group project, I was responsible for designing, implementing, and securing the backend infrastructure using Firebase. My role was to ensure seamless data handling, user management, and real-time functionality to support the core features of the mobile application.
+
+Technologies & Services Used
+•	Firebase Authentication – User login and registration
+•	Cloud Firestore – NoSQL database for structured app data
+•	Firebase Storage – Media file handling (e.g., profile images)
+•	Firebase Security Rules – Role-based access control
+
+Backend Functionality Implemented
+1. User Authentication
+•	Enabled secure user registration and login using Firebase Authentication.
+•	Set up authentication state monitoring for seamless access control.
+•	Implemented role-based tagging for different user types (e.g., Admins, Players, Coaches).
+2. Database Design with Firestore
+•	Designed a scalable Firestore schema with collections for:
+o	users – storing role, profile info, and UID links
+o	teams – storing team details and relationships to players
+o	players – individual player registration and assignment
+o	events – for tournament and match registration
+•	Implemented real-time listeners to reflect live updates for team rosters and events.
+3. Media Handling with Firebase Storage
+•	Enabled upload of profile pictures and team logos.
+•	Structured Storage paths to align with Firestore user and team IDs.
+•	Applied storage rules to restrict access to authorized users only.
+4. Security and Access Control
+•	Wrote custom Firebase Security Rules to:
+o	Allow only authenticated users to access sensitive data.
+o	Restrict write permissions based on user roles.
+o	Protect Storage and Firestore collections from unauthorized access.
+Achievements
+•	Successfully deployed a fully functional, real-time backend using Firebase services.
+•	Ensured the app supports secure, role-based data access for multiple user types.
+•	Contributed to a smooth, responsive experience by leveraging Firebase’s live syncing features.
+•	Gained practical experience in NoSQL data structuring, Firebase rule-writing, and mobile backend integration.
+
+Challenges & Solutions
+
+Challenge	                                            Solution
+Structuring dynamic relationships in Firestore	      Used subcollections and document references for relational modeling
+Handling access control for multiple user roles	      Implemented and tested comprehensive Firebase security rules
+Managing media uploads securely	                      Defined custom Storage rules and mapped files to authenticated user IDs
+
+Conclusion
+This backend development experience deepened my skills in cloud-based infrastructure and mobile app support. Firebase offered a versatile backend-as-a-service solution, and my contributions ensured that the Namibia Hockey Union app could scale securely and efficiently.
+
