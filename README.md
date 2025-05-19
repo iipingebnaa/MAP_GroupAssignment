@@ -9,3 +9,7 @@ To do:
 2.Clone the repository in Android Studio
 3.Edit your folder's files
 
+
+
+Link to Group Assignment's documentaion:
+https://docs.google.com/document/d/1AlaWxo3Z2baVNIVNpLvqMwa0PvJpr1HWAhPitggc4fA/edit?usp=sharing
