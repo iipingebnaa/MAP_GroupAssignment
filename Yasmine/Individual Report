@@ -1,6 +1,103 @@
-THINGS TO DOCUMENT...
-1.What have you done throughout the whole project cycle?(Your contributions)
-2.What have you learnt?
-3.What challenges did you face?
+Code that we trouble shooted :')
+// Data class to represent a team
+data class Team(
+    val id: String = "",
+    val name: String = "",
+    val contactPerson: String = "",
+    val email: String = ""
+)
 
-Start...
+// Function to handle team registration
+@Composable
+fun TeamRegistrationScreen(
+    onRegister: (Team) -> Unit,
+    onNavigateToLogin: () -> Unit // Added for navigation
+) {
+    var teamName by remember { mutableStateOf("") }
+    var contactPerson by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var isRegistering by remember { mutableStateOf(false)} // Track registration state
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = teamName,
+            onValueChange = { teamName = it },
+            label = { Text("Team Name") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        OutlinedTextField(
+            value = contactPerson,
+            onValueChange = { contactPerson = it },
+            label = { Text("Contact Person") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Register Team Button
+        Button(
+            onClick = {
+                // Input validation
+                if (teamName.isNotBlank() && contactPerson.isNotBlank() && email.isNotBlank()) {
+                    isRegistering = true // Show progress indicator
+                    val team = Team(name = teamName, contactPerson = contactPerson, email = email)
+                    onRegister(team) // Pass the Team object to the registration function
+                    // Simulate registration delay and navigation
+                    CoroutineScope(Dispatchers.IO).launch { // Use IO dispatcher for network/database
+                        delay(2000) // Simulate network delay
+                        withContext(Dispatchers.Main) {
+                            isRegistering = false // Hide progress indicator
+                            onNavigateToLogin() // Navigate to login screen on successful registration
+                        }
+                    }
+
+                } else {
+                    // Show error message (replace with proper error handling)
+                    Toast.makeText(context,"Please fill in all fields", Toast.LENGTH_SHORT).show()
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            if (isRegistering) {
+                CircularProgressIndicator( // Show while registering
+                    modifier = Modifier.size(20.dp),
+                    color = Color.White,
+                    strokeWidth = 3.dp
+                )
+            } else {
+                Text("Register Team")
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        // Navigate to Login (optional, if you have a login screen)
+        TextButton(onClick = onNavigateToLogin) {
+            Text("Already have an account? Login")
+        }
+    }
+}
+
+// Function to add team data to Firebase
+fun addTeamToFirebase(team: Team, onComplete: (Boolean) -> Unit) {
+    val db = Firebase.firestore
+    db.collection("teams")
+        .add(team)
+        .addOnSuccessListener { documentReference ->
+            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            onComplete(true)
+        }
+        .addOnFailureListener { e ->
+            Log.w(TAG, "Error adding document", e)
+            onComplete(false)
+        }
+}
